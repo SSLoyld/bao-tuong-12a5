@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <link rel="icon" href="https://img.icons8.com/color/48/year-of-horse.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gieo Quẻ Đầu Xuân - Tổ 1</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="minigame.css">
+</head>
+<body>
+    <div class="main-container">
+        <header id="page-header">
+            <a href="index.html" class="btn-back-home" style="position: absolute; left: 20px; top: 20px; text-decoration: none;">🏠</a>
+            <h1 style="font-size: 3.5em;">Gieo Quẻ Đầu Năm</h1>
+            <p class="sub-title">Nhận lời chúc may mắn từ Tổ 1</p>
+        </header>
+
+        <div class="game-container">
+            <div id="qure-container" class="shaker">
+                <div class="stick"></div>
+                <div class="stick"></div>
+                <div class="stick"></div>
+                <div class="shaker-body">🧧 Quẻ Xuân</div>
+            </div>
+            
+            <button id="shake-btn" onclick="shakeQuare()">Lắc Ông Xăm 🏮</button>
+        </div>
+
+        <div id="result-modal" class="modal">
+            <div class="modal-content">
+                <h2 style="font-family: 'Dancing Script'; color: #c0392b;">Quẻ Của Bạn Là...</h2>
+                <div id="quare-result"></div>
+                <button onclick="closeModal()" class="btn-back">Nhận Lộc 🌸</button>
+            </div>
+        </div>
+
+        <footer id="page-footer"><p>Chúc bạn một năm mới vạn sự như ý!</p></footer>
+    </div>
+
+    <script src="minigame.js"></script>
+</body>
+</html>

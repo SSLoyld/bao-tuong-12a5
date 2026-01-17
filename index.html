@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <link rel="icon" href="https://img.icons8.com/color/48/year-of-horse.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo Tường Tổ 1 - Xuân Bính Ngọ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<script>
+    let secretCode = '';
+document.addEventListener('keydown', (e) => {
+    secretCode += e.key;
+    if (secretCode.includes('tet')) {
+        alert('🧨 Chúc mừng năm mới! Bạn đã tìm thấy mật mã bí ẩn!');
+        secretCode = ''; 
+    }
+});
+    window.addEventListener("load", function () {
+    const loader = document.getElementById("loader");
+    loader.style.opacity = "0";
+    setTimeout(() => {
+        loader.style.display = "none";
+    }, 500); // Đợi hiệu ứng mờ dần xong mới ẩn hẳn
+});
+    function createBlossom() {
+        const blossom = document.createElement('div');
+        blossom.classList.add('blossom');
+        
+        // Vị trí xuất hiện ngẫu nhiên theo chiều ngang
+        blossom.style.left = Math.random() * 100 + 'vw';
+        
+        // Kích thước ngẫu nhiên cho cánh hoa
+        const size = Math.random() * 8 + 7 + 'px'; 
+        blossom.style.width = size;
+        blossom.style.height = size;
+        
+        // Tốc độ rơi ngẫu nhiên (từ 3s đến 6s)
+        blossom.style.animationDuration = Math.random() * 3 + 3 + 's';
+        
+        // Độ mờ ngẫu nhiên để tạo chiều sâu (cánh xa cánh gần)
+        blossom.style.opacity = Math.random() * 0.5 + 0.5;
+        
+        document.body.appendChild(blossom);
+        
+        // Xóa cánh hoa sau khi rơi xong để tránh nặng máy
+        setTimeout(() => {
+            blossom.remove();
+        }, 6000);
+    }
+
+    // Tạo cánh hoa mới mỗi 300ms (có thể chỉnh số này lớn hơn nếu muốn hoa rơi thưa hơn)
+    setInterval(createBlossom, 300);
+const wishes = [
+    "Chúc bạn năm mới đỗ nguyện vọng 1!",
+    "Vạn sự như ý - Tỷ sự như mơ!",
+    "Tiền vào như nước - Tiền ra nhỏ giọt!",
+    "Chúc bạn luôn rực rỡ như nắng xuân!",
+    "Một năm Bính Ngọ bứt phá thành công!"
+];
+
+function getWish() {
+    const randomWish = wishes[Math.floor(Math.random() * wishes.length)];
+    document.getElementById('wish-text').innerText = randomWish;
+    document.getElementById('wish-modal').style.display = "block";
+}
+
+function closeModal() {
+    document.getElementById('wish-modal').style.display = "none";
+}
+function toggleMusic() {
+    const music = document.getElementById('bg-music');
+    const icon = document.getElementById('music-icon');
+    
+    if (music.paused) {
+        music.play();
+        icon.innerText = "🎵"; // Đổi icon thành nốt nhạc
+    } else {
+        music.pause();
+        icon.innerText = "🔇"; // Đổi icon thành tắt tiếng
+    }
+}
+</script>
+
+<body>
+<div id="loader">
+    <div class="spinner">🌸</div>
+    <p>Đang tải mùa xuân về...</p>
+</div>
+    <div class="lantern lantern-left">🏮</div>
+    <div class="lantern lantern-right">🏮</div>
+    <div class="main-container">
+<header id="page-header">
+    
+    <div class="school-identity">
+        <img src="logo_truong.png" alt="Logo THPT Ngô Gia Tự" class="header-logo">
+        
+        <div class="school-info">
+            <p class="school-name">THPT Ngô Gia Tự - Tập thể lớp 12A5 </p>
+        </div>
+    </div>
+    <div class="tet-decoration">🌸</div>
+    <h1>Xuân Yêu Thương</h1>
+    <p class="sub-title">Chào mừng Xuân Bính Ngọ 2026</p>
+    <div class="tet-decoration">🌸</div>
+    <div style="margin-top: 20px;">
+    <a href="member.html" class="btn-view-team">🧧 Khám Phá Thành Viên Tổ 1 🧧</a>
+    </div>
+</header>
+
+        <div id="content-wrap">
+            
+           <section class="card intro-card">
+    <h2>🧧 Lời Ngỏ 🧧</h2>
+    
+    <p class="intro-text">
+        Xuân mới lại về, mang theo sắc hoa rực rỡ và những ước mơ đang dần thành hình trong lòng mỗi người. Nhân dịp năm mới, các thành viên Tổ 1 xin gửi đến tập thể lớp 12A5 lời chúc chân thành và ấm áp nhất. Chúc các bạn một năm mới sức khỏe, bản lĩnh vững vàng, tinh thần học tập bền bỉ để sẵn sàng bước vào những kỳ thi quan trọng của đời học sinh.
+    </p>
+
+    <p class="intro-text">
+        Năm cuối cấp là chặng đường nhiều áp lực nhưng cũng đầy khát vọng. Mong rằng 12A5 sẽ luôn đoàn kết, động viên nhau vượt qua những ngày ôn thi căng thẳng, giữ vững niềm tin và dũng cảm theo đuổi ước mơ của tuổi 18. Chúc tập thể lớp chúng ta một mùa xuân tràn đầy quyết tâm, thi cử thuận lợi và chạm tay đến những hoài bão đã ấp ủ.
+    </p>
+
+    <div class="intro-sign">
+        Tổ 1 thân gửi! 🌺
+    </div>
+</section>
+          <section class="card article-card">
+    <h2>📝 Góc Văn Thơ</h2>
+    
+    <div class="post-item">
+        <h3>Lời Chúc Ngày Xuân</h3>
+        
+        <div class="verse-box">
+            <p>"Ngày xuân nâng chén rượu đào</p>
+            <p>Cầu cho phúc lộc dạt dào khắp nơi."</p>
+        </div>
+
+        <p class="article-text">
+            Giữa hình ảnh truyền thống và lời chúc mang tính cộng đồng đã làm cho câu thơ vừa có giá trị thẩm mỹ, vừa có ý nghĩa nhân văn sâu sắc. Nó khẳng định Tết là dịp sum vầy và gieo niềm tin vào một năm mới tốt đẹp.
+        </p>
+        <p class="article-text">
+            Lời chúc <strong>“cầu cho phúc lộc dạt dào khắp nơi”</strong> thể hiện ước mong chung của con người trong ngày Tết: một năm mới an khang, thịnh vượng, hạnh phúc lan tỏa đến mọi nhà.
+        </p>
+        <span class="author-sign">✍️ Sưu tầm: GVT</span>
+    </div>
+
+    <hr class="divider">
+
+    <div class="post-item">
+        <h3>Khai Bút Đầu Xuân</h3>
+        <p class="article-text">
+            Xuân về mang theo hơi thở mới của đất trời, đánh thức những ước mơ còn ấp ủ trong lòng người. Trong khoảnh khắc giao hòa thiêng liêng ấy, nét bút đầu xuân không chỉ mở ra trang giấy mới mà còn khơi dậy niềm tin, hy vọng và khát vọng vươn lên trong năm mới.
+        </p>
+        <p class="article-text">
+            Khai bút đầu xuân là gửi gắm ước mong về một năm học tập tiến bộ, tâm hồn an nhiên, cuộc sống đủ đầy và mọi điều tốt đẹp sẽ nảy nở như lộc biếc đầu cành.
+        </p>
+
+        <div class="verse-box" style="border-color: #c0392b;">
+            <p>"Tân niên khai bút nghinh phúc lộc</p>
+            <p>Xuân nhật đề văn đón an khang"</p>
+        </div>
+        <span class="author-sign">✍️ Người viết: KBĐX</span>
+    </div>
+</section>
+
+            <section class="card media-card">
+                <h2>🎶 Giai Điệu Xuân</h2>
+                <div class="media-content">
+                    <p><strong>Đang phát:</strong> Vạn sự như ý</p>
+                    <div class="music-control" onclick="toggleMusic()">
+    <span id="music-icon">🔇</span>
+</div>
+<audio id="bg-music" loop>
+    <source src="Vạn Sự Như Ý.mp3" type="audio/mpeg">
+</audio>
+                    
+                    <div class="video-box">
+                        <p>[Khu vực Video Clip Hoạt Động Nhóm]</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card comment-card">
+                <h2>💬 Gửi Lời Chúc</h2>
+                <form class="comment-form" action="mes-respond.html">
+                    <input type="text" placeholder="Tên của bạn..." required>
+                    <textarea rows="3" placeholder="Viết lời chúc vào đây nhé..." required></textarea>
+                    <button type="submit">Gửi Lời Chúc 🧧</button>
+                </form>
+            </section>
+            <section class="card" style="text-align: center; border: 3px solid #ffd700;">
+                <h2 style="font-family: 'Dancing Script'">🏮 Trò Chơi Đầu Xuân 🏮</h2>
+                <p>Bạn muốn biết năm tới của mình thế nào không?</p>
+                <a href="minigame.html" class="btn-back" style="text-decoration: none;">Thử Vận May Ngay 🧧</a>
+            </section>
+        </div> <footer id="page-footer">
+            <p>Thiết kế bởi <strong>Tổ 1 - 12A1</strong> | &copy; 2025</p>
+            <p style="font-size: 0.8em; opacity: 0.8;">Email: to1.lop12a5@gmail.com</p>
+        </footer>
+    </div>
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.card').forEach(card => {
+        observer.observe(card);
+    });
+</script>
+<div id="lixi-btn" onclick="getWish()">🧧 Nhận Lì Xì</div>
+
+<div id="wish-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2 style="font-family: 'Dancing Script'">Quà từ Tổ 1</h2>
+        <p id="wish-text"></p>
+    </div>
+</div>
+</body>
+</html>

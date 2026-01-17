@@ -1,0 +1,120 @@
+.btn-back-home {
+    font-size: 2.5em; 
+    background: rgba(255, 255, 255, 0.2);
+    padding: 15px;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    
+    /* Thêm bóng đổ */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    
+    /* Căn chỉnh vị trí */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;  
+    height: 60px; 
+}
+
+/* Hiệu ứng khi di chuột vào */
+.btn-back-home:hover {
+    transform: scale(1.1) rotate(-10deg); /* Phóng to và nghiêng nhẹ vui mắt */
+    background: #ffd700;
+    box-shadow: 0 0 15px #ffd700;
+    cursor: pointer;
+}
+.game-container {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+/* Tạo hình ống xăm */
+.shaker {
+    position: relative;
+    width: 120px;
+    height: 180px;
+    background: #c0392b;
+    margin: 50px auto;
+    border-radius: 10px 10px 50px 50px;
+    border: 4px solid #ffd700;
+    display: flex;
+    justify-content: center;
+}
+
+.shaker-body {
+    position: absolute;
+    bottom: 20px;
+    color: #ffd700;
+    font-weight: bold;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.2em;
+}
+
+/* Các que xăm bên trong */
+.stick {
+    width: 10px;
+    height: 100px;
+    background: #f1c40f;
+    margin: -40px 2px 0;
+    border-radius: 5px;
+    border: 1px solid #d35400;
+}
+
+/* Hiệu ứng rung lắc */
+.shaking {
+    animation: shake 0.5s infinite;
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    20% { transform: translate(-3px, 0px) rotate(-5deg); }
+    40% { transform: translate(3px, 2px) rotate(5deg); }
+    60% { transform: translate(-3px, 1px) rotate(-5deg); }
+    80% { transform: translate(3px, -1px) rotate(5deg); }
+    100% { transform: translate(1px, -2px) rotate(0deg); }
+}
+
+#shake-btn {
+    background: #c0392b;
+    color: #ffd700;
+    padding: 15px 30px;
+    border: 2px solid #ffd700;
+    border-radius: 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#shake-btn:hover {
+    transform: scale(1.1);
+    background: #a93226;
+}
+
+/* Modal kết quả */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0; top: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8);
+}
+
+.modal-content {
+    background: #fffbf0;
+    margin: 15% auto;
+    padding: 40px;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 20px;
+    text-align: center;
+    border: 5px double #c0392b;
+}
+
+#quare-result {
+    font-size: 1.5em;
+    color: #d35400;
+    margin: 20px 0;
+    font-weight: bold;
+}

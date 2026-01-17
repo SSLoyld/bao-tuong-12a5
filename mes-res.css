@@ -1,0 +1,20 @@
+/* --- THÊM CHO TRANG CẢM ƠN --- */
+.btn-back {
+    display: inline-block;
+    background-color: #f1c40f; /* Màu vàng tươi */
+    color: #c0392b; /* Chữ đỏ */
+    padding: 12px 30px;
+    border-radius: 25px;
+    text-decoration: none; /* Bỏ gạch chân */
+    font-weight: bold;
+    margin-top: 15px;
+    transition: all 0.3s;
+    border: 2px solid #c0392b;
+}
+
+.btn-back:hover {
+    background-color: #c0392b;
+    color: #f1c40f;
+    box-shadow: 0 5px 15px rgba(192, 57, 43, 0.4);
+    transform: translateY(-2px);
+}
