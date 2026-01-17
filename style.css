@@ -684,6 +684,7 @@ body {
     width: 0%;
     transition: width 0.1s linear;
 }
+
 /* --- TRANG TRÍ GALLERY POLAROID --- */
 .gallery-card {
     background-color: #fffbf0; /* Nền màu kem sáng */
