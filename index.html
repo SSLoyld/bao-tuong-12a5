@@ -83,6 +83,101 @@ function toggleMusic() {
         icon.innerText = "🔇"; // Đổi icon thành tắt tiếng
     }
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    // --- 1. DANH SÁCH BÀI HÁT  ---
+    const songList = [
+        { title: "Vạn Sự Như Ý", src: "van_su_nhu_y.mp3" },
+        { title: "Tết Đong Đầy", src: "tet_dong_day.mp3" },
+        { title: "Một năm mới bình an", src: "mot_nam_moi_binh_an.mp3" },
+        { title: "Con mèo xuân", src: "con_meo_xuan.mp3" }
+    ];
+
+    // --- 2. KHỞI TẠO BIẾN ---
+    let currentSongIndex = 0;
+    const audioPlayer = document.getElementById('audio-player');
+    const songTitle = document.getElementById('song-title');
+    const playBtn = document.getElementById('play-btn');
+    const diskCover = document.getElementById('disk-cover');
+    const progressBar = document.getElementById('progress-bar');
+    const progressContainer = document.querySelector('.progress-container');
+
+    // Kiểm tra an toàn
+    if (!audioPlayer || !songTitle) return;
+
+    // --- 3. CÁC HÀM XỬ LÝ ---
+    
+    // Hàm tải bài hát
+    function loadSong(index) {
+        const song = songList[index];
+        songTitle.innerText = song.title; 
+        audioPlayer.src = song.src;
+        // Reset đĩa
+        if(diskCover) diskCover.style.transform = 'rotate(0deg)';
+    }
+
+    // Hàm Bật/Tắt
+    window.togglePlay = function() {
+        if (audioPlayer.paused) {
+            audioPlayer.play();
+            playBtn.innerText = "⏸"; 
+            if(diskCover) diskCover.classList.add('rotate'); 
+        } else {
+            audioPlayer.pause();
+            playBtn.innerText = "▶"; 
+            if(diskCover) diskCover.classList.remove('rotate'); 
+        }
+    };
+
+    // Hàm Next
+    window.nextSong = function() {
+        currentSongIndex++;
+        if (currentSongIndex > songList.length - 1) {
+            currentSongIndex = 0; 
+        }
+        loadSong(currentSongIndex);
+        audioPlayer.play();
+        playBtn.innerText = "⏸";
+        if(diskCover) diskCover.classList.add('rotate');
+    };
+
+    // Hàm Prev
+    window.prevSong = function() {
+        currentSongIndex--;
+        if (currentSongIndex < 0) {
+            currentSongIndex = songList.length - 1;
+        }
+        loadSong(currentSongIndex);
+        audioPlayer.play();
+        playBtn.innerText = "⏸";
+        if(diskCover) diskCover.classList.add('rotate');
+    };
+
+    // Cập nhật thanh tiến trình
+    audioPlayer.ontimeupdate = function() {
+        if(audioPlayer.duration && progressBar) {
+            const progressPercent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+            progressBar.style.width = `${progressPercent}%`;
+        }
+    };
+
+    // Tự động qua bài khi hết
+    audioPlayer.onended = function() {
+        window.nextSong();
+    };
+
+    // Tua nhạc
+    window.setProgress = function(e) {
+        if(!progressContainer) return;
+        const width = progressContainer.clientWidth;
+        const clickX = e.offsetX;
+        const duration = audioPlayer.duration;
+        audioPlayer.currentTime = (clickX / width) * duration;
+    };
+
+    // --- 4. CHẠY LẦN ĐẦU ---
+    loadSong(currentSongIndex);
+});
 </script>
 
 <body>
@@ -167,23 +262,35 @@ function toggleMusic() {
     </div>
 </section>
 
-            <section class="card media-card">
-                <h2>🎶 Giai Điệu Xuân</h2>
-                <div class="media-content">
-                    <p><strong>Đang phát:</strong> Vạn sự như ý</p>
-                    <div class="music-control" onclick="toggleMusic()">
-    <span id="music-icon">🔇</span>
-</div>
-<audio id="bg-music" loop>
-    <source src="Vạn Sự Như Ý.mp3" type="audio/mpeg">
-</audio>
-                    
-                    <div class="video-box">
-                        <p>[Khu vực Video Clip Hoạt Động Nhóm]</p>
-                    </div>
-                </div>
-            </section>
+        <section class="card media-card">
+    <h2>🎶 Giai Điệu Xuân</h2>
+    
+    <div class="music-player-box">
+        <div class="disk-cover" id="disk-cover">
+            <div class="disk-center">🎵</div>
+        </div>
 
+        <div class="song-info">
+            <p id="song-title">Đang tải...</p>
+        </div>
+
+        <div class="player-controls">
+            <button onclick="prevSong()" class="control-btn">⏮</button>
+            <button onclick="togglePlay()" class="control-btn" id="play-btn">▶</button>
+            <button onclick="nextSong()" class="control-btn">⏭</button>
+        </div>
+
+        <div class="progress-container" onclick="setProgress(event)">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+
+        <audio id="audio-player" ontimeupdate="updateProgress()" onended="nextSong()"></audio>
+    </div>
+
+    <div class="video-box" style="margin-top: 20px;">
+        <p>[Khu vực Video Clip Hoạt Động Nhóm]</p>
+    </div>
+</section>
             <section class="card comment-card">
                 <h2>💬 Gửi Lời Chúc</h2>
                 <form class="comment-form" action="mes-respond.html">
@@ -225,4 +332,5 @@ function toggleMusic() {
     </div>
 </div>
 </body>
+
 </html>
