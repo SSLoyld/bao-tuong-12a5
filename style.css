@@ -577,4 +577,110 @@ body {
     font-size: 2em;
 }
 .intro-card::before { top: 10px; left: 10px; transform: rotate(-45deg); }
+
 .intro-card::after { bottom: 10px; right: 10px; transform: rotate(135deg); }
+
+/* --- TRÌNH PHÁT NHẠC MINI --- */
+.music-player-box {
+    background: #fffbf0;
+    border: 2px dashed #c0392b;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    max-width: 300px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Đĩa nhạc */
+.disk-cover {
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, #333 10%, #111 100%);
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    border: 4px solid #ffd700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.5s;
+}
+
+.disk-center {
+    width: 30px;
+    height: 30px;
+    background: #c0392b;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 12px;
+}
+
+/* Hiệu ứng xoay khi hát */
+.rotate {
+    animation: spin 5s linear infinite;
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+/* Tên bài hát */
+.song-info p {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5em;
+    color: #c0392b;
+    margin: 5px 0 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Nút điều khiển */
+.player-controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.control-btn {
+    background: #c0392b;
+    color: #ffd700;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.control-btn:hover {
+    background: #e74c3c;
+    transform: scale(1.1);
+}
+
+/* Thanh tiến trình */
+.progress-container {
+    background: #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 0;
+    height: 6px;
+    width: 100%;
+}
+
+.progress-bar {
+    background: #c0392b;
+    height: 100%;
+    border-radius: 5px;
+    width: 0%;
+    transition: width 0.1s linear;
+}
