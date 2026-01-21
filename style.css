@@ -1,0 +1,804 @@
+/* --- 1. THIẾT LẬP CƠ BẢN & BACKGROUND --- */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Comfortaa', sans-serif; 
+    background: linear-gradient(135deg, #a71d31 0%, #3f0d12 100%);
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Khung bao ngoài cùng để giới hạn chiều rộng trang web trên máy tính */
+.main-container {
+    max-width: 800px;
+    margin: 0 auto; /* Căn giữa màn hình */
+    background-color: rgba(255, 255, 255, 0.05); /* Lớp phủ mờ nhẹ */
+    box-shadow: 0 0 50px rgba(0,0,0,0.5);
+    min-height: 100vh;
+}
+
+/* --- 2. HEADER --- */
+#page-header {
+    text-align: center;
+    padding: 60px 20px;
+    color: #ffd700; /* Màu vàng kim */
+    text-shadow: 2px 2px 0px #8b0000;
+}
+
+.school-identity {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Căn giữa nội dung bên trong */
+    position: relative;      /* Làm gốc tọa độ cho logo */
+    padding: 20px 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.header-logo {
+    position: absolute;      /* Đưa logo ra khỏi luồng văn bản thông thường */
+    left: 0;                 /* Ghim chặt logo vào bên trái */
+    width: 70px; 
+    height: auto;
+    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.8));
+}
+
+.school-info {
+    text-align: center;      /* Căn giữa chữ trong khối info */
+}
+
+.school-name {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 1.3em; 
+    margin: 0;
+    color: #ffd700;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+.class-name {
+    font-family: 'Comfortaa', sans-serif;
+    margin: 2px 0 0 0;
+    font-size: 1.1em;
+    color: rgba(255, 215, 0, 0.9); 
+}
+
+.header-logo {
+    width: 70px; /* Kích thước logo */
+    height: auto;
+    /* Hiệu ứng phát sáng nhẹ màu vàng cho logo nổi bật trên nền đỏ */
+    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.8));
+}
+
+.school-info {
+    text-align: left; /* Chữ tên trường căn trái để thẳng hàng với nhau */
+}
+
+.school-name {
+    /* Sử dụng font hiện đại cho dễ đọc tên trường */
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 1.5em;
+    margin: 0;
+    color: #ffd700;
+    text-transform: uppercase; /* Chữ in hoa */
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.class-name {
+    font-family: 'Comfortaa', sans-serif;
+    margin: 5px 0 0 0;
+    font-size: 1.2em;
+    /* Màu vàng nhạt hơn một chút để phân cấp */
+    color: rgba(255, 215, 0, 0.9); 
+}
+#page-header h1 {
+    font-family: 'Dancing Script', cursive; 
+    font-size: 4.5em;
+    
+    margin-top: 10px;    /* Khoảng cách phía trên */
+    margin-bottom: 0px;  /* Xóa bỏ khoảng cách phía dưới để ép dòng dưới lên */
+    
+    line-height: 1;      /* Thu hẹp chiều cao dòng chữ */
+    color: #ffd700;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.sub-title {
+    font-size: 1.2em;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-top: 2px solid #ffd700;
+    border-bottom: 2px solid #ffd700;
+    display: inline-block;
+    padding: 5px 20px;
+
+    margin-top: 5px;     /* Chỉ để một khoảng hở rất nhỏ với tiêu đề chính */
+}
+.tet-decoration {
+    font-size: 2em;
+    animation: laclu 2s infinite ease-in-out; /* Hiệu ứng lắc lư */
+}
+
+/* --- 3. CÁC THẺ NỘI DUNG (CARD STYLE) --- */
+#content-wrap {
+    padding: 0 20px 40px 20px;
+}
+
+/* Định dạng chung cho mọi khối (Card) */
+.card {
+    background: rgba(255, 255, 255, 0.85); 
+    backdrop-filter: blur(10px); /* Hiệu ứng làm mờ nền phía sau */
+    -webkit-backdrop-filter: blur(10px);
+    
+    border: 1px solid rgba(255, 215, 0, 0.3); /* Viền vàng mảnh */
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-out;
+}
+.card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.card:hover {
+    transform: translateY(-10px) scale(1.02); /* Vừa nâng lên vừa to ra */
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 15px 45px rgba(255, 215, 0, 0.2);
+}
+
+/* --- 4. CHI TIẾT TỪNG PHẦN --- */
+
+/* Bài viết */
+.article-title {
+    color: #d35400;
+    font-size: 1.3em;
+    margin-bottom: 5px;
+}
+.author {
+    display: block;
+    text-align: right;
+    font-style: italic;
+    font-weight: bold;
+    color: #7f8c8d;
+    margin-top: 10px;
+}
+.divider {
+    border: 0;
+    border-top: 1px solid #ddd;
+    margin: 20px 0;
+}
+
+/* Góc ảnh (Grid system) */
+.gallery-grid {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.photo-frame {
+    background: white;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transform: rotate(-2deg); /* Nghiêng nhẹ tạo vẻ tự nhiên */
+    transition: transform 0.3s;
+}
+
+.photo-frame:nth-child(even) {
+    transform: rotate(2deg); /* Ảnh chẵn nghiêng chiều ngược lại */
+}
+
+.photo-frame:hover {
+    transform: scale(1.05) rotate(0deg); /* Phóng to và thẳng lại khi di chuột */
+    z-index: 10;
+}
+
+.photo-frame img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #eee;
+}
+
+.caption {
+    font-size: 0.8em;
+    text-align: center;
+    color: #555;
+    margin-top: 5px;
+}
+
+/* Media */
+.video-box {
+    background: #000;
+    color: white;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+.audio-player {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Form bình luận */
+.comment-form input,
+.comment-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+.comment-form input:focus,
+.comment-form textarea:focus {
+    border-color: #c0392b;
+    outline: none;
+}
+
+.comment-form button {
+    background-color: #c0392b;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1.1em;
+    transition: background 0.3s;
+}
+
+.comment-form button:hover {
+    background-color: #a93226;
+}
+
+/* --- 5. FOOTER --- */
+#page-footer {
+    text-align: center;
+    padding: 20px;
+    color: rgba(255,255,255,0.7);
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+/* --- 6. HIỆU ỨNG VÀ CHI TIẾT KHÁC --- */
+/* Keyframes cho hiệu ứng lắc lư */
+@keyframes laclu {
+    0%, 100% { transform: rotate(-10deg); }
+    50% { transform: rotate(10deg); }
+}
+/* Tạo các hạt hoa đào */
+/* Hiệu ứng cánh hoa anh đào */
+.blossom {
+    position: fixed;
+    top: -10px;
+    /* Gradient từ hồng nhạt sang hồng anh đào đặc trưng */
+    background: linear-gradient(135deg, #fff0f5 0%, #ffb7c5 100%); 
+    /* Hình dáng cánh hoa: Bo tròn không đối xứng để trông tự nhiên hơn */
+    border-radius: 95% 10% 95% 50%; 
+    pointer-events: none;
+    z-index: 999;
+    animation: fall linear infinite;
+    /* Hiệu ứng phát sáng nhẹ để cánh hoa nổi bật trên nền đỏ của trang web */
+    box-shadow: 0 0 6px rgba(255, 183, 197, 0.6);
+}
+
+@keyframes fall {
+    0% { 
+        transform: translateY(0) rotate(0deg) translateX(0); 
+        opacity: 0; 
+    }
+    10% { opacity: 1; } /* Hiện dần ra khi vừa rơi */
+    90% { opacity: 0.8; }
+    100% { 
+        /* Cánh hoa vừa rơi, vừa xoay, vừa lướt ngang một chút */
+        transform: translateY(100vh) rotate(720deg) translateX(50px); 
+        opacity: 0; 
+    }
+}
+
+/* Tùy chỉnh thanh cuộn cho Chrome, Safari và Edge */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #3f0d12; /* Màu tối theo nền body */
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(#ffd700, #c0392b); /* Vàng chuyển sang đỏ */
+    border-radius: 10px;
+    border: 2px solid #3f0d12;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #ffd700;
+}
+.lantern {
+    position: fixed;
+    top: 50px;
+    font-size: 50px;
+    z-index: 1000;
+    animation: swing 3s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+.lantern-left { left: 5%; }
+.lantern-right { right: 5%; }
+
+@keyframes swing {
+    0% { transform: rotate(-5deg) translateY(0); }
+    100% { transform: rotate(5deg) translateY(10px); }
+}
+#lixi-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #ffd700;
+    color: #c0392b;
+    padding: 15px 25px;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    z-index: 2000;
+    animation: pulse 1.5s infinite;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 3000;
+    left: 0; top: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.modal-content {
+    background: #fff;
+    margin: 20% auto;
+    padding: 30px;
+    width: 300px;
+    border-radius: 15px;
+    text-align: center;
+    border: 3px solid #ffd700;
+    position: relative;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.btn-view-team {
+    display: inline-block;
+    padding: 12px 30px;
+    
+    /* Tạo hiệu ứng màu vàng kim loại */
+    background-image: linear-gradient(to right, #FFD700 0%, #FDB931 51%, #FFD700 100%);
+    background-size: 200% auto; 
+    
+    color: #8b0000; /* Chữ màu đỏ đậm cho dễ đọc trên nền vàng */
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 50px;
+    
+    box-shadow: none; 
+    border: 2px solid #fff; /* Thêm viền trắng mỏng để tách biệt với nền đỏ */
+    
+    font-family: 'Dancing Script', sans-serif;
+    font-size: 1.5em;
+    transition: 0.5s; /* Thời gian chuyển màu mượt mà */
+}
+
+.btn-view-team:hover {
+    background-position: right center; /* Kích hoạt hiệu ứng vàng chạy */
+    color: #fff;
+    border-color: #FFD700;
+}
+/* --- 7. MEDIA QUERIES CHO THIẾT BỊ DI ĐỘNG --- */
+/* Chỉ áp dụng cho màn hình nhỏ dưới 600px (điện thoại) */
+@media (max-width: 600px) {
+    .school-identity {
+        flex-direction: column; /* Xếp dọc logo và tên trường */
+        padding-top: 20px;
+    }
+    
+    .header-logo {
+        position: static; /* Bỏ cố định để logo nằm giữa */
+        display: block;
+        margin: 0 auto 10px auto; /* Căn giữa logo */
+    }
+
+    #page-header h1 {
+        font-size: 3em; /* Giảm cỡ chữ tiêu đề chút cho đỡ tràn */
+    }
+
+    .nav-menu {
+        font-size: 0.9em; /* Thu nhỏ chữ menu */
+    }
+}
+#loader {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: #c0392b;
+    z-index: 99999; /* Cao nhất để che hết mọi thứ */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #ffd700;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5em;
+    transition: opacity 0.5s;
+}
+
+.spinner {
+    font-size: 3em;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin { 
+    100% { transform: rotate(360deg); } 
+}
+.music-control {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    width: 50px; height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10000;
+    border: 2px solid #ffd700;
+    font-size: 25px;
+    animation: spin-slow 10s linear infinite;
+}
+@keyframes spin-slow { 100% { transform: rotate(360deg); } }
+/* --- TRANG TRÍ GÓC VĂN THƠ --- */
+.verse-box {
+    background-color: #fffbf0; /* Nền giấy cũ nhẹ */
+    border: 2px dashed #d35400; /* Viền nét đứt màu cam đất */
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px 0;
+    text-align: center;
+    position: relative;
+}
+
+.verse-box p {
+    font-family: 'Dancing Script', cursive; /* Font chữ viết tay */
+    font-size: 1.5em;
+    color: #c0392b; /* Màu đỏ đô */
+    margin: 5px 0;
+    line-height: 1.4;
+}
+
+/* Trang trí hoa văn nhỏ ở góc thơ (tuỳ chọn) */
+.verse-box::before {
+    content: '🌸';
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    font-size: 1.5em;
+    background: #fff;
+}
+
+.article-text {
+    font-family: 'Comfortaa', cursive; /* Hoặc font mặc định của web */
+    text-align: justify; /* Căn đều 2 bên cho đẹp */
+    line-height: 1.8;
+    color: #333;
+    font-size: 1em;
+    margin-bottom: 15px;
+}
+
+.author-sign {
+    display: block;
+    text-align: right;
+    font-style: italic;
+    color: #7f8c8d;
+    margin-top: 10px;
+    font-weight: bold;
+}
+/* --- TRANG TRÍ RIÊNG CHO LỜI NGỎ (INTRO CARD) --- */
+.intro-card {
+    background-color: #fffbf0; /* Màu kem giấy cũ */
+    border: 3px double #c0392b; /* Viền đôi màu đỏ */
+    border-radius: 15px;
+    padding: 30px;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(192, 57, 43, 0.15); /* Bóng đổ nhẹ màu đỏ */
+    background-image: radial-gradient(#e74c3c 0.5px, transparent 0.5px), radial-gradient(#e74c3c 0.5px, #fffbf0 0.5px);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+    /* Hiệu ứng nền chấm bi mờ rất nhẹ để tạo vân giấy */
+    background-blend-mode: overlay;
+}
+
+/* Tiêu đề Lời Ngỏ */
+.intro-card h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3em;
+    color: #c0392b;
+    text-align: center;
+    margin-bottom: 25px;
+    text-shadow: 2px 2px 0px #f1c40f; /* Bóng chữ màu vàng */
+}
+
+/* Nội dung văn bản */
+.intro-text {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 1.1em;
+    line-height: 1.8; /* Giãn dòng thoáng hơn */
+    color: #4a2c2a; /* Màu nâu đậm cho dễ đọc trên nền kem */
+    text-align: justify; /* Căn đều 2 bên */
+    margin-bottom: 15px;
+}
+
+/* Chữ cái đầu dòng to lên (Drop cap) */
+.intro-text:first-of-type::first-letter {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3.5em;
+    color: #d35400;
+    float: left;
+    line-height: 0.8;
+    padding-right: 10px;
+    padding-top: 5px;
+}
+
+/* Phần ký tên */
+.intro-sign {
+    text-align: right;
+    margin-top: 20px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8em;
+    color: #c0392b;
+    font-weight: bold;
+}
+
+/* Trang trí góc (Tuỳ chọn) */
+.intro-card::before, .intro-card::after {
+    content: '🌸';
+    position: absolute;
+    font-size: 2em;
+}
+.intro-card::before { top: 10px; left: 10px; transform: rotate(-45deg); }
+.intro-card::after { bottom: 10px; right: 10px; transform: rotate(135deg); }
+/* --- TRÌNH PHÁT NHẠC MINI --- */
+.music-player-box {
+    background: #fffbf0;
+    border: 2px dashed #c0392b;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    max-width: 300px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Đĩa nhạc */
+.disk-cover {
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, #333 10%, #111 100%);
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    border: 4px solid #ffd700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.5s;
+}
+
+.disk-center {
+    width: 30px;
+    height: 30px;
+    background: #c0392b;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 12px;
+}
+
+/* Hiệu ứng xoay khi hát */
+.rotate {
+    animation: spin 5s linear infinite;
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+/* Tên bài hát */
+.song-info p {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5em;
+    color: #c0392b;
+    margin: 5px 0 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Nút điều khiển */
+.player-controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.control-btn {
+    background: #c0392b;
+    color: #ffd700;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.control-btn:hover {
+    background: #e74c3c;
+    transform: scale(1.1);
+}
+
+/* Thanh tiến trình */
+.progress-container {
+    background: #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 0;
+    height: 6px;
+    width: 100%;
+}
+
+.progress-bar {
+    background: #c0392b;
+    height: 100%;
+    border-radius: 5px;
+    width: 0%;
+    transition: width 0.1s linear;
+}
+
+/* --- TRANG TRÍ GALLERY POLAROID --- */
+.gallery-card {
+    background-color: #fffbf0; /* Nền màu kem sáng */
+    border: 3px solid #ffd700; /* Viền vàng */
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+}
+
+.gallery-card h2 {
+    font-family: 'Dancing Script', cursive;
+    color: #c0392b; /* Đỏ nâu */
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+/* Đường kẻ đứt nét màu đỏ */
+.dashed-line {
+    border-top: 2px dashed #c0392b;
+    width: 80%;
+    margin: 0 auto 40px; /* Cách xa ảnh một chút */
+    opacity: 0.6;
+}
+
+/* Lưới bố cục ảnh */
+.gallery-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px; /* Khoảng cách giữa 2 ảnh */
+    flex-wrap: wrap; /* Tự xuống dòng trên điện thoại */
+}
+
+/* Khung ảnh Polaroid */
+.polaroid {
+    background: #fff;
+    padding: 15px 15px 50px 15px; /* Chừa phần đáy rộng để viết chữ */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2); /* Bóng đổ tạo chiều sâu */
+    width: 250px;
+    transition: all 0.4s ease; /* Hiệu ứng mượt khi di chuột */
+    position: relative;
+    cursor: pointer;
+}
+
+.polaroid .img-box {
+    width: 100%;
+    height: 200px; /* Chiều cao cố định cho đều */
+    overflow: hidden;
+    background: #eee;
+}
+
+.polaroid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cắt ảnh cho vừa khung mà không bị méo */
+    transition: transform 0.5s;
+}
+
+/* Chữ chú thích bên dưới */
+.polaroid .caption {
+    font-family: 'Comfortaa', sans-serif;
+    color: #555;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    font-size: 1em;
+}
+
+/* Tạo độ nghiêng ngẫu nhiên */
+.rotate-left {
+    transform: rotate(-5deg); /* Nghiêng trái */
+}
+
+.rotate-right {
+    transform: rotate(5deg); /* Nghiêng phải */
+}
+
+/* Hiệu ứng khi di chuột vào ảnh */
+.polaroid:hover {
+    transform: scale(1.1) rotate(0deg) !important; /* Phóng to và đứng thẳng lại */
+    z-index: 10; /* Nổi lên trên cùng */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+.polaroid:hover img {
+    transform: scale(1.1); /* Zoom nhẹ ảnh bên trong */
+}
+/* --- TRANG TRÍ VIDEO --- */
+.video-box {
+    /* 1. Tự động co giãn theo kích thước video */
+    width: fit-content;  /* Chiều rộng hộp = chiều rộng video */
+    height: auto;        /* Chiều cao hộp = chiều cao video (Xóa bỏ khoảng đen thừa) */
+    
+    /* 2. Giới hạn kích thước để không bị tràn màn hình */
+    max-width: 90%;      /* Tối đa chỉ chiếm 90% màn hình */
+    
+    /* 3. Căn giữa */
+    margin: 20px auto;   /* Tự động căn giữa trang */
+    
+    /* 4. Trang trí */
+    background: #000;
+    border: 3px solid #ffd700; /* Viền vàng */
+    border-radius: 15px;
+    padding: 6px;        /* Chừa một lớp viền đen mỏng bao quanh video */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+    
+    /* 5. Fix lỗi khoảng trắng nhỏ dưới chân video */
+    display: block; 
+    line-height: 0; 
+}
+
+/* --- VIDEO BÊN TRONG --- */
+.styled-video {
+    width: 100%;         /* Video sẽ chiếm hết phần rộng của hộp */
+    height: auto;        /* Giữ nguyên tỷ lệ hình ảnh, không bị méo */
+    border-radius: 10px; /* Bo góc video cho khớp với hộp */
+    object-fit: contain;
+}

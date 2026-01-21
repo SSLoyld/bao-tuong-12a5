@@ -1,0 +1,131 @@
+/* --- CẤU TRÚC NỀN & LAYOUT --- */
+body {
+    margin: 0;
+    padding: 0;
+    /* Nền đỏ nhung sang trọng */
+    background: radial-gradient(circle, #c0392b 0%, #8e2e21 100%);
+    font-family: 'Comfortaa', sans-serif;
+    height: 100vh;
+    overflow: hidden; /* Ẩn thanh cuộn */
+}
+
+/* Căn giữa màn hình */
+.center-screen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* --- KHUNG THÔNG BÁO (CARD) --- */
+.card {
+    background-color: #fffbf0; /* Màu giấy kem */
+    width: 100%;
+    max-width: 450px;
+    padding: 40px 30px;
+    border-radius: 20px;
+    text-align: center;
+    position: relative;
+    
+    /* Viền và bóng đổ phát sáng */
+    border: 3px double #d35400;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3), 0 10px 30px rgba(0,0,0,0.5);
+    
+    /* Hiệu ứng xuất hiện từ dưới lên */
+    animation: slideUp 0.8s ease-out forwards;
+}
+
+/* Trang trí hoa mai ở 4 góc */
+.card::before, .card::after {
+    content: '🌸';
+    position: absolute;
+    font-size: 1.5em;
+    opacity: 0.8;
+}
+.card::before { top: 10px; left: 10px; transform: rotate(-20deg); }
+.card::after { bottom: 10px; right: 10px; transform: rotate(20deg); }
+
+/* --- ICON THÀNH CÔNG --- */
+.success-icon {
+    font-size: 5em;
+    margin-bottom: 20px;
+    display: inline-block;
+    
+    /* Hiệu ứng nảy (pop-up) */
+    animation: popIn 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) both;
+    animation-delay: 0.3s; /* Chờ khung hiện rồi mới nảy */
+}
+
+/* --- TEXT STYLE --- */
+.card h1 {
+    font-family: 'Dancing Script', cursive;
+    color: #c0392b;
+    font-size: 3em;
+    margin: 10px 0 20px 0;
+    text-shadow: 1px 1px 0 #ffd700;
+}
+
+.card p {
+    font-size: 1.1em;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.card strong {
+    color: #d35400;
+    font-size: 1.2em;
+    display: block;
+    margin-top: 10px;
+    font-family: 'Dancing Script', cursive;
+}
+
+/* Đường kẻ ngang trang trí */
+.divider {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(192, 57, 43, 0.75), rgba(0, 0, 0, 0));
+    margin: 20px 0;
+}
+
+/* --- NÚT QUAY VỀ (BUTTON) --- */
+.btn-back {
+    display: inline-block;
+    background: linear-gradient(45deg, #f1c40f, #f39c12); /* Gradient vàng */
+    color: #8e2e21; /* Chữ đỏ */
+    padding: 12px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    border: 2px solid #fff;
+    box-shadow: 0 4px 15px rgba(241, 196, 15, 0.4);
+    transition: all 0.3s ease;
+    
+    /* Hiệu ứng rung nhẹ gây chú ý */
+    animation: pulse 2s infinite;
+}
+
+.btn-back:hover {
+    transform: translateY(-3px) scale(1.05);
+    background: linear-gradient(45deg, #c0392b, #e74c3c); /* Chuyển sang đỏ khi hover */
+    color: #fff;
+    box-shadow: 0 6px 20px rgba(192, 57, 43, 0.5);
+    border-color: #f1c40f;
+}
+
+/* --- HIỆU ỨNG ANIMATION (KEYFRAMES) --- */
+
+/* Hiệu ứng trượt lên */
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Hiệu ứng nảy icon */
+@keyframes popIn {
+    0% { transform: scale(0); opacity: 0; }
+    60% { transform: scale(1.2); opacity: 1; }
+}
